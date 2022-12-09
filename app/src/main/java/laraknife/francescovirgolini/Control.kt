@@ -29,13 +29,12 @@ class Control : AppCompatActivity() {
                         estadoConexion = state
                     }
                     BluJhr.Connected.Pending -> {
-                        Toast.makeText(applicationContext, "Pendiente", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "Conectando", Toast.LENGTH_SHORT).show()
                         estadoConexion = state
                     }
                     BluJhr.Connected.False -> {
                         Toast.makeText(applicationContext, "Error", Toast.LENGTH_SHORT).show()
                         estadoConexion = state
-                        //startActivity(Intent(applicationContext,MainActivity::class.java))
                     }
                     BluJhr.Connected.Disconnect -> {
                         Toast.makeText(applicationContext, "Desconectado", Toast.LENGTH_SHORT).show()
