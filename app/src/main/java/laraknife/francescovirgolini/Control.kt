@@ -1,14 +1,14 @@
 package laraknife.francescovirgolini
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.ingenieriajhr.blujhr.BluJhr
 import laraknife.francescovirgolini.databinding.ActivityControlBinding
 
 class Control : AppCompatActivity() {
-
     var addres = ""
     lateinit var blu: BluJhr
     var estadoConexion = BluJhr.Connected.False
@@ -20,12 +20,14 @@ class Control : AppCompatActivity() {
 
         addres = intent.getStringExtra("addres").toString()
         blu = BluJhr(this)
+        val mediaPlayer: MediaPlayer = MediaPlayer.create(this, R.raw.francescovirgolini)
 
         blu.setDataLoadFinishedListener(object:BluJhr.ConnectedBluetooth{
             override fun onConnectState(state: BluJhr.Connected) {
                 when (state) {
                     BluJhr.Connected.True -> {
                         Toast.makeText(applicationContext, "Conectado", Toast.LENGTH_SHORT).show()
+                        mediaPlayer.start()
                         estadoConexion = state
                     }
                     BluJhr.Connected.Pending -> {
@@ -48,49 +50,32 @@ class Control : AppCompatActivity() {
         binding.btnAbajo.setOnClickListener {
             binding.imgState.setImageResource(R.drawable.abajo)
             while (binding.btnAbajo.isPressed){
-                // Código instrucción vehículo
                 blu.bluTx("B")
             }
-            // Texto para que se detenga
             blu.bluTx("S")
-            /*
-            if (btnAbajo.isPressed){
-                // Código instrucción vehículo
-                blu.bluTx("B")
-            }else{
-                // Texto para que se detenga
-                blu.bluTx("A")
-            }
-            */
         }
 
         binding.btnAdelante.setOnClickListener {
             binding.imgState.setImageResource(R.drawable.arriba)
             while (binding.btnAdelante.isPressed){
-                // Código instrucción vehículo
                 blu.bluTx("B")
             }
-            // Texto para que se detenga
             blu.bluTx("S")
         }
 
         binding.btnIzquierda.setOnClickListener {
             binding.imgState.setImageResource(R.drawable.izquierda)
             while (binding.btnIzquierda.isPressed){
-                // Código instrucción vehículo
                 blu.bluTx("B")
             }
-            // Texto para que se detenga
             blu.bluTx("S")
         }
 
         binding.btnDerecha.setOnClickListener {
             binding.imgState.setImageResource(R.drawable.derecha)
             while (binding.btnDerecha.isPressed){
-                // Código instrucción vehículo
                 blu.bluTx("B")
             }
-            // Texto para que se detenga
             blu.bluTx("S")
         }
 
@@ -120,5 +105,4 @@ class Control : AppCompatActivity() {
             blu.connect(addres)
         }
     }
-
 }

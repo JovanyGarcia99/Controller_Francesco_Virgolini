@@ -11,7 +11,6 @@ import com.ingenieriajhr.blujhr.BluJhr
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
     lateinit var blue: BluJhr
     var devicesBluetooth = ArrayList<String>()
 
@@ -28,7 +27,6 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("addres",devicesBluetooth[i])
             startActivity(intent)
         }
-
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
