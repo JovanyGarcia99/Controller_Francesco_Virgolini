@@ -49,41 +49,33 @@ class Control : AppCompatActivity() {
 
         binding.btnAbajo.setOnClickListener {
             binding.imgState.setImageResource(R.drawable.abajo)
-            while (binding.btnAbajo.isPressed){
-                blu.bluTx("B")
-            }
-            blu.bluTx("S")
+            blu.bluTx("B")
+            //blu.bluTx("S") Detenerse
         }
 
         binding.btnAdelante.setOnClickListener {
             binding.imgState.setImageResource(R.drawable.arriba)
-            while (binding.btnAdelante.isPressed){
-                blu.bluTx("B")
-            }
-            blu.bluTx("S")
+            blu.bluTx("F")
         }
 
         binding.btnIzquierda.setOnClickListener {
             binding.imgState.setImageResource(R.drawable.izquierda)
-            while (binding.btnIzquierda.isPressed){
-                blu.bluTx("B")
-            }
-            blu.bluTx("S")
+            blu.bluTx("L")
         }
 
         binding.btnDerecha.setOnClickListener {
             binding.imgState.setImageResource(R.drawable.derecha)
-            while (binding.btnDerecha.isPressed){
-                blu.bluTx("B")
-            }
-            blu.bluTx("S")
+            blu.bluTx("R")
         }
 
         binding.btnClaxon.setOnClickListener {
+            blu.bluTx("V")
+            /*
             while (binding.btnClaxon.isPressed){
                 blu.bluTx("V")
             }
             blu.bluTx("v")
+            */
         }
 
         binding.btn50.setOnClickListener {
