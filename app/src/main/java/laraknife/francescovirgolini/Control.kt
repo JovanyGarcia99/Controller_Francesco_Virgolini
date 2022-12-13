@@ -23,10 +23,6 @@ class Control : AppCompatActivity() {
         blu = BluJhr(this)
         val mediaPlayer: MediaPlayer = MediaPlayer.create(this, R.raw.francescovirgolini)
 
-        // Cambio de imagen en origen //
-        binding.imgState.setImageResource(R.drawable.stop)
-        // Cambio de imagen en origen //
-
         blu.setDataLoadFinishedListener(object:BluJhr.ConnectedBluetooth{
             override fun onConnectState(state: BluJhr.Connected) {
                 when (state) {
@@ -58,6 +54,7 @@ class Control : AppCompatActivity() {
             //blu.bluTx("S") Detenerse
             Handler().postDelayed({
                 blu.bluTx("S")
+                binding.imgState.setImageResource(R.drawable.stop)
             }, 1000)
         }
 
@@ -78,12 +75,6 @@ class Control : AppCompatActivity() {
 
         binding.btnClaxon.setOnClickListener {
             blu.bluTx("V")
-            /*
-            while (binding.btnClaxon.isPressed){
-                blu.bluTx("V")
-            }
-            blu.bluTx("v")
-            */
         }
 
         binding.btn50.setOnClickListener {
