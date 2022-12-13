@@ -3,6 +3,7 @@ package laraknife.francescovirgolini
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.Handler
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.ingenieriajhr.blujhr.BluJhr
@@ -55,6 +56,9 @@ class Control : AppCompatActivity() {
             binding.imgState.setImageResource(R.drawable.abajo)
             blu.bluTx("B")
             //blu.bluTx("S") Detenerse
+            Handler().postDelayed({
+                blu.bluTx("S")
+            }, 1000)
         }
 
         binding.btnAdelante.setOnClickListener {
