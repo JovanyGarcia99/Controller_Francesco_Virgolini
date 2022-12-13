@@ -22,6 +22,10 @@ class Control : AppCompatActivity() {
         blu = BluJhr(this)
         val mediaPlayer: MediaPlayer = MediaPlayer.create(this, R.raw.francescovirgolini)
 
+        // Cambio de imagen en origen //
+        binding.imgState.setImageResource(R.drawable.stop)
+        // Cambio de imagen en origen //
+
         blu.setDataLoadFinishedListener(object:BluJhr.ConnectedBluetooth{
             override fun onConnectState(state: BluJhr.Connected) {
                 when (state) {
