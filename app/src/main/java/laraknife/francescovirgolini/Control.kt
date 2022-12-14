@@ -3,7 +3,7 @@ package laraknife.francescovirgolini
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.os.Handler
+//import android.os.Handler
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.ingenieriajhr.blujhr.BluJhr
@@ -29,6 +29,7 @@ class Control : AppCompatActivity() {
                     BluJhr.Connected.True -> {
                         Toast.makeText(applicationContext, "Conectado", Toast.LENGTH_SHORT).show()
                         mediaPlayer.start()
+                        mediaPlayer.release()
                         estadoConexion = state
                     }
                     BluJhr.Connected.Pending -> {
@@ -52,10 +53,12 @@ class Control : AppCompatActivity() {
             binding.imgState.setImageResource(R.drawable.abajo)
             blu.bluTx("B")
             //blu.bluTx("S") Detenerse
+            /*
             Handler().postDelayed({
                 blu.bluTx("S")
                 binding.imgState.setImageResource(R.drawable.stop)
             }, 1000)
+             */
         }
 
         binding.btnAdelante.setOnClickListener {
